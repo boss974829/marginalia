@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+  --color-bg: #12100e;
+  --color-surface: #1c1915;
+  --color-raised: #272218;
+  --color-fg: #f6f0e6;
+  --color-muted: #a89884;
+  --color-brass: #c9894a;
+  --color-brass-bright: #e4b57a;
+  --color-ink: #12100e;
+  --color-line: #3a3228;
+  --radius-dock: 1.5rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  label.tap,
+  summary {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-brass);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 28px;
+    background: transparent;
+  }
+
+  input[type="range"]:focus {
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: var(--color-line);
+    border-radius: 999px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 22px;
+    width: 22px;
+    margin-top: -10px;
+    border-radius: 999px;
+    background: var(--color-brass);
+    border: 2px solid var(--color-ink);
+  }
+
+  input[type="range"]::-moz-range-track {
+    height: 2px;
+    background: var(--color-line);
+    border-radius: 999px;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    height: 22px;
+    width: 22px;
+    border-radius: 999px;
+    background: var(--color-brass);
+    border: 2px solid var(--color-ink);
+  }
+}
+
+.kicker {
+  letter-spacing: 0.18em;
+}
+
+.ask-panel {
+  max-height: 82%;
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.meter {
+  transition: width 200ms ease-out;
+}
+
+.tap {
+  transition: scale 150ms ease-out;
+}
+
+.tap:active:not(:disabled) {
+  scale: 0.96;
+}
+
+.dock {
+  padding-bottom: max(0.85rem, env(safe-area-inset-bottom));
+}
+
+.icon-swap {
+  transition:
+    opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+    filter 300ms cubic-bezier(0.2, 0, 0, 1),
+    scale 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.icon-swap[data-on="false"] {
+  opacity: 0;
+  scale: 0.25;
+  filter: blur(4px);
+}
+
+.spin {
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rise {
+  animation: rise 420ms cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+.rise-2 {
+  animation: rise 420ms cubic-bezier(0.2, 0, 0, 1) 80ms both;
+}
+
+.rise-3 {
+  animation: rise 420ms cubic-bezier(0.2, 0, 0, 1) 160ms both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tap,
+  .icon-swap,
+  .spin,
+  .rise,
+  .rise-2,
+  .rise-3 {
+    animation: none;
+    transition: none;
+  }
+}
