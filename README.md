@@ -1,3 +1,13 @@
+<p align="center">
+  <a href="https://github.com/boss974829/marginalia">
+    <img src="https://boss974829.github.io/readme/marginalia.gif" width="100%" alt="Marginalia" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/boss974829/marginalia"><strong>Open the source →</strong></a>
+</p>
+
 # Marginalia
 
 Upload a PDF, hear it read aloud, ask a question, then keep listening. Answers come from the book first, and from the web when the pages do not say.
